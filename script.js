@@ -154,6 +154,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let name, email;
   let userAnswers = {};
 
+  
   /**
    * It takes a component as an argument and overwrites the main element with the component.
    * @param {HTMLElement} component - The component to be rendered.

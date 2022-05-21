@@ -82,6 +82,7 @@ function welcomeComponent(initial = {}, onSubmit) {
   return container;
 }
 
+
 /**
  * Create a div with the class input-group, create a label, create an input, and append the label and
  * input to the div.
@@ -128,6 +129,13 @@ function createInputGroup(
   container.appendChild(inputAlert);
 
   input.addEventListener("keypress", (event) => {
+    const value = event.target.value;
+    if (value) {
+      inputAlert.classList.add("hide");
+    }
+  });
+
+  input.addEventListener("change", (event) => {
     const value = event.target.value;
     if (value) {
       inputAlert.classList.add("hide");

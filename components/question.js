@@ -135,6 +135,7 @@ function questionComponent(
   return container;
 }
 
+
 /**
  * It creates a radio button with a label
  * @param id - The id of the input element.

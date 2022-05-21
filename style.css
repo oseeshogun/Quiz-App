@@ -263,6 +263,7 @@ main {
   border: 1px solid #028a3d;
 }
 
+
 @media screen and (max-width: 992px) {
   main {
     width: 40%;
