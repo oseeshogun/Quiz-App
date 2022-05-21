@@ -156,6 +156,18 @@ main {
   outline: none;
 }
 
+.container .choices .choice input:checked {
+  display: none;
+}
+
+.container .choices .choice input + .radio-circle {
+  display: none;
+}
+
+.container .choices .choice input:checked + .radio-circle {
+  display: initial;
+}
+
 .container .choices .choice input::before {
   background-color: #028a3d;
 }
@@ -163,6 +175,19 @@ main {
 .container .choices .choice label {
   font-size: 0.8rem;
   color: rgba(0, 0, 0, 0.6);
+}
+
+.container .choices .choice.selected {
+  border: 1px solid #028a3d;
+}
+
+.container .choices .choice .radio-circle {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background-color: #028a3d;
+  margin-right: 1rem;
+  flex: 0 0 auto;
 }
 
 .container .buttons {
@@ -221,6 +246,21 @@ main {
   color: #000000b3;
   font-weight: bold;
   margin: 1rem 0;
+}
+
+.input-alert {
+  font-size: 0.65rem;
+  color: #ff3838;
+  margin-top: 5px;
+}
+
+.hide {
+  display: none !important;
+}
+
+.choice input {
+  background-color: #028a3d;
+  border: 1px solid #028a3d;
 }
 
 @media screen and (max-width: 992px) {

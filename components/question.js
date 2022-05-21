@@ -1,4 +1,3 @@
-
 /**
  * It creates a DOM element that represents a question
  * @param question - the question object
@@ -154,11 +153,25 @@ function createChoice(id, name, value, isCorrect, onCheckedChange) {
   input.name = name;
   input.id = id;
 
-  input.addEventListener("change", (event) => {
-    const checked = event.target.checked;
+  const onChecked = (checked) => {
+    const selected = document.querySelector(".choice.selected");
+    if (selected) {
+      selected.classList.remove("selected");
+    }
     if (checked) {
+      container.classList.add("selected");
       onCheckedChange(event, isCorrect);
     }
+  };
+
+  container.addEventListener("click", (event) => {
+    input.checked = true;
+    onChecked(true);
+  });
+
+  input.addEventListener("change", (event) => {
+    const checked = event.target.checked;
+    onChecked(checked);
   });
 
   const label = document.createElement("label");
@@ -166,6 +179,13 @@ function createChoice(id, name, value, isCorrect, onCheckedChange) {
   label.setAttribute("for", id);
 
   container.appendChild(input);
+
+  const circleButton = document.createElement("div");
+
+  circleButton.className = "radio-circle";
+
+  container.appendChild(circleButton);
+
   container.appendChild(label);
 
   return container;

@@ -1,4 +1,3 @@
-
 /**
  * It creates a div element, adds a class to it, creates a h2 element, adds text to it, creates a p
  * element, adds text to it, creates a form element, adds an event listener to it, creates an input
@@ -31,6 +30,14 @@ function welcomeComponent(initial = {}, onSubmit) {
     event.preventDefault();
     const name = event.target.elements.name.value;
     const email = event.target.elements.email.value;
+
+    if (!name || !email) {
+      if (!name)
+        document.getElementById(`alert__name`).classList.remove("hide");
+      if (!email)
+        document.getElementById(`alert__email`).classList.remove("hide");
+      return;
+    }
     onSubmit(event, name, email);
   });
 
@@ -39,7 +46,8 @@ function welcomeComponent(initial = {}, onSubmit) {
     "Nom",
     "Votre nom",
     "text",
-    initial.name
+    initial.name,
+    "N’oubliez pas de renseigner votre nom avant de commencer le Quiz."
   );
 
   const emailInputGroup = createInputGroup(
@@ -47,7 +55,8 @@ function welcomeComponent(initial = {}, onSubmit) {
     "Email",
     "Votre email",
     "email",
-    initial.email
+    initial.email,
+    "N’oubliez pas de renseigner votre email avant de commencer le Quiz"
   );
 
   form.appendChild(nameInputGroup);
@@ -90,7 +99,7 @@ function createInputGroup(
   placeholder,
   type,
   initialValue,
-  required = true
+  alertMessage
 ) {
   const container = document.createElement("div");
 
@@ -106,12 +115,24 @@ function createInputGroup(
   input.type = type;
   input.placeholder = placeholder;
   input.id = id;
-  input.required = required;
 
   if (initialValue) input.value = initialValue;
 
   container.appendChild(label);
   container.appendChild(input);
+
+  const inputAlert = document.createElement("span");
+  inputAlert.className = "input-alert hide";
+  inputAlert.id = "alert__" + id;
+  inputAlert.textContent = alertMessage;
+  container.appendChild(inputAlert);
+
+  input.addEventListener("keypress", (event) => {
+    const value = event.target.value;
+    if (value) {
+      inputAlert.classList.add("hide");
+    }
+  });
 
   return container;
 }
