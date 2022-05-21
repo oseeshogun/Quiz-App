@@ -1,3 +1,4 @@
+
 /**
  * It creates a div element, adds a class to it, creates a h2 element, adds text to it, creates a p
  * element, adds text to it, creates a form element, adds an event listener to it, creates an input

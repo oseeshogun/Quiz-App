@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function () {
   // Questions collections
   const questionsCollection = [

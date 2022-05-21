@@ -1,3 +1,4 @@
+
 /**
  * It creates a component that displays the user's name, email, score, and total number of questions,
  * and it also displays a success or failure icon depending on the user's score
@@ -103,7 +104,7 @@ function createFailedIcon() {
 
   const image = document.createElement("img");
 
-  image.src = "/icons8-close-50.png";
+  image.src = "/icons8-close.png";
 
   image.setAttribute("alt", "Failed icon");
 

@@ -1,3 +1,4 @@
+
 /**
  * It creates a DOM element that represents a question
  * @param question - the question object
