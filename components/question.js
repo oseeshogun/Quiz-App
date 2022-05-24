@@ -14,7 +14,7 @@ function questionComponent(
   total,
   onAnswerSelected,
   onNext,
-  onQuit
+  onQuit,
 ) {
   // create div with class container
   const container = document.createElement("div");
