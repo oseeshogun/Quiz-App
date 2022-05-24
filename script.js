@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", function () {
     questions.slice(0, questionNumber);
 
     const welcome = welcomeComponent(
-      { name, email },
+      {},
       (event, _name, _email) => {
         name = _name;
         email = _email;

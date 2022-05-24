@@ -41,16 +41,22 @@ function questionComponent(
 
   const timeCounting = document.createElement("span");
   timeCounting.className = "time";
-  timeCounting.textContent = "60";
+  timeCounting.textContent = "59";
 
   state.appendChild(timeCounting);
 
   progressContainer.appendChild(state);
 
-  const progress = document.createElement("progress");
+  const progress = document.createElement("div");
+  progress.className = "progress";
 
-  progress.max = 100;
-  progress.value = 100;
+  const progressBar = document.createElement("div");
+  progressBar.className = "progress-bar";
+
+  // progress.max = 100;
+  // progress.value = 100;
+
+  progress.appendChild(progressBar);
 
   progressContainer.appendChild(progress);
 
@@ -83,6 +89,8 @@ function questionComponent(
       onNext(count);
     }
   }, 1000);
+
+  // const timer
 
   quitButton.addEventListener("click", (event) => {
     onQuit(event);

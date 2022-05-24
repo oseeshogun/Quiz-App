@@ -12,7 +12,7 @@ html {
 }
 
 body {
-  background: linear-gradient(to right, #72eeaa, #9feffe);
+  background: linear-gradient(to right, #72eeaa 30%, #9feffe);
   height: 100%;
   display: flex;
   justify-content: center;
@@ -21,12 +21,13 @@ body {
 
 main {
   height: fit-content;
-  width: 26%;
+  width: 28%;
   min-height: 450px;
   min-width: 300px;
   background-color: #fff;
   transition: 1s;
 }
+
 
 .container {
   padding: 7% 5%;
@@ -51,8 +52,33 @@ main {
   height: 10px;
   width: 100%;
   border-radius: 20px;
-  transition: 0.3s;
 }
+
+.container .progress {
+  height: 10px;
+  width: 100%;
+  border-radius: 20px;
+  background: #9feffe;
+  margin-top: 5px;
+}
+
+.container .progress-bar {
+  background: #028a3d;
+  height: 10px;
+  width: 100%;
+  border-radius: 20px;
+  animation: progressAnimation 60000ms linear;
+}
+
+@keyframes progressAnimation {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
 
 .container p {
   text-align: center;
