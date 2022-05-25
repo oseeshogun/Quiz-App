@@ -85,7 +85,7 @@ function questionComponent(
     } else {
       clearInterval(timer);
       // Terminé
-      onAnswerSelected(question.id, false);
+      onAnswerSelected(question.id, null);
       onNext(count);
     }
   }, 1000);

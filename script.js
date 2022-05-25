@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
   // Questions collections
   const questionsCollection = [
     createQuestion(
@@ -153,7 +153,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let name, email;
   let userAnswers = {};
 
-  
+
   /**
    * It takes a component as an argument and overwrites the main element with the component.
    * @param {HTMLElement} component - The component to be rendered.
@@ -209,7 +209,9 @@ document.addEventListener("DOMContentLoaded", function () {
               count,
               questionNumber,
               (questionId, isCorrect) => {
-                userAnswers[questionId] = isCorrect;
+                if (typeof isCorrect == "boolean") {
+                  userAnswers[questionId] = isCorrect;
+                }
               },
               (prevCount) => createQuestionComponent(prevCount + 1),
               () => endGame()
