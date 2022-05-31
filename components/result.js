@@ -9,7 +9,7 @@
  * @param onRestart - a function that will be called when the user clicks on the "Accueil" button.
  * @returns A div element with a class of container.
  */
-function endGameComponent(name, email, score, total, onRestart) {
+function resultComponent(name, email, score, total, onRestart) {
   const container = document.createElement("div");
   container.className = "container";
 

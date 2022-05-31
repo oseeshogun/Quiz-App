@@ -82,7 +82,6 @@ function welcomeComponent(initial = {}, onSubmit) {
   return container;
 }
 
-
 /**
  * Create a div with the class input-group, create a label, create an input, and append the label and
  * input to the div.
@@ -122,25 +121,22 @@ function createInputGroup(
   container.appendChild(label);
   container.appendChild(input);
 
-  const inputAlert = document.createElement("span");
-  inputAlert.className = "input-alert hide";
-  inputAlert.id = "alert__" + id;
-  inputAlert.textContent = alertMessage;
-  container.appendChild(inputAlert);
+  const alertErrorContainer = document.createElement("span");
+  alertErrorContainer.className = "input-alert hide";
+  alertErrorContainer.id = "alert__" + id;
+  alertErrorContainer.textContent = alertMessage;
+  container.appendChild(alertErrorContainer);
 
-  input.addEventListener("keypress", (event) => {
+  const hideAlertMessage = (event) => {
     const value = event.target.value;
     if (value) {
-      inputAlert.classList.add("hide");
+      alertErrorContainer.classList.add("hide");
     }
-  });
+  };
 
-  input.addEventListener("change", (event) => {
-    const value = event.target.value;
-    if (value) {
-      inputAlert.classList.add("hide");
-    }
-  });
+  input.addEventListener("keypress", hideAlertMessage);
+
+  input.addEventListener("change", hideAlertMessage);
 
   return container;
 }

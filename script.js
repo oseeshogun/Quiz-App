@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function () {
   // Questions collections
   const questionsCollection = [
@@ -154,7 +153,6 @@ document.addEventListener("DOMContentLoaded", function () {
   let name, email;
   let userAnswers = {};
 
-  
   /**
    * It takes a component as an argument and overwrites the main element with the component.
    * @param {HTMLElement} component - The component to be rendered.
@@ -178,55 +176,55 @@ document.addEventListener("DOMContentLoaded", function () {
     // Get the first elements
     questions.slice(0, questionNumber);
 
-    const welcome = welcomeComponent(
-      {},
-      (event, _name, _email) => {
-        name = _name;
-        email = _email;
+    const welcome = welcomeComponent({}, (event, _name, _email) => {
+      name = _name;
+      email = _email;
 
-        const endGame = () => {
-          const score = Object.values(userAnswers).filter((x) => x).length;
-          overwriteMain(
-            endGameComponent(name, email, score, questionNumber, () =>
-              startGame()
-            )
-          );
-        };
+      const endGame = () => {
+        const score = Object.values(userAnswers).filter((x) => x).length;
+        overwriteMain(
+          resultComponent(name, email, score, questionNumber, () =>
+            startGame()
+          )
+        );
+      };
 
-        const createQuestionComponent = (count = 1) => {
-          if (count > questionNumber) {
-            // End of the series of questions.
-            endGame();
-            return;
-          }
+      const createQuestionComponent = (count = 1) => {
+        if (count > questionNumber) {
+          // End of the series of questions.
+          endGame();
+          return;
+        }
 
-          const index = Math.floor(Math.random() * questions.length);
-          const question = questions[index];
-          // remove the question from the list
-          questions.splice(index, 1);
-          overwriteMain(
-            questionComponent(
-              question,
-              count,
-              questionNumber,
-              (questionId, isCorrect) => {
-                userAnswers[questionId] = isCorrect;
-              },
-              (prevCount) => createQuestionComponent(prevCount + 1),
-              () => endGame()
-            )
-          );
-        };
+        const index = Math.floor(Math.random() * questions.length);
+        const question = questions[index];
+        // remove the question from the list
+        questions.splice(index, 1);
+        overwriteMain(
+          questionComponent(
+            question,
+            count,
+            questionNumber,
+            (questionId, isCorrectAnswer) => {
+              /* Checking if the answer is correct or not. */
+              if (typeof isCorrectAnswer == "boolean") {
+                userAnswers[questionId] = isCorrectAnswer;
+              }
+            },
+            (prevCount) => createQuestionComponent(prevCount + 1),
+            () => endGame()
+          )
+        );
+      };
 
-        // First question created
-        createQuestionComponent();
-      }
-    );
+      // First question created
+      createQuestionComponent();
+    });
 
     overwriteMain(welcome);
   };
 
-  startGame();
+  // startGame();
 });
 
 /**
