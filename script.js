@@ -224,7 +224,7 @@ document.addEventListener("DOMContentLoaded", function () {
     overwriteMain(welcome);
   };
 
-  // startGame();
+  startGame();
 });
 
 /**
