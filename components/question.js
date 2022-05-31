@@ -14,7 +14,7 @@ function questionComponent(
   total,
   onAnswerSelected,
   onNext,
-  onQuit
+  onQuit,
 ) {
   // create div with class container
   const container = document.createElement("div");
@@ -85,7 +85,7 @@ function questionComponent(
     } else {
       clearInterval(timer);
       // Terminé
-      onAnswerSelected(question.id, false);
+      onAnswerSelected(question.id, null);
       onNext(count);
     }
   }, 1000);

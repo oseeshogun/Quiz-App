@@ -21,7 +21,6 @@ function welcomeComponent(initial = {}, onSubmit) {
         spécialement sélectionnées pour vous.
         C'est fun et c'est gratuit.
     `;
-
   container.appendChild(sentence);
 
   const form = document.createElement("form");
